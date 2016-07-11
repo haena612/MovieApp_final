@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
         titleDetailLabel.text = titledetail
         
         //posterImage.hidden = true
-        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+        UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.posterImage.alpha = 0.0
             }, completion: {
                 (finished: Bool) -> Void in
@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
                 self.posterImage.setImageWithURL(NSURL(string: self.posterUrlString)!)
                 
                 // Fade in
-                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                     self.posterImage.alpha = 1.0
                     }, completion: nil)
         })
