@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var releasedate: UITextField!
     @IBOutlet weak var titleDetailLabel: UITextField!
 
-    
     var posterUrlString: String = ""
     @IBOutlet weak var titleDetail: UITextField!
     var overview: String = ""
@@ -26,14 +25,27 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        posterImage.setImageWithURL(NSURL(string: posterUrlString)!)
+//        posterImage.setImageWithURL(NSURL(string: posterUrlString)!)
         overviewLabel.text = overview
         releasedate.text = date
         titleDetailLabel.text = titledetail
         
-        // Do any additional setup after loading the view.
+        //posterImage.hidden = true
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.posterImage.alpha = 0.0
+            }, completion: {
+                (finished: Bool) -> Void in
+                
+                //Once the label is completely invisible, set the text and fade it back in
+                self.posterImage.setImageWithURL(NSURL(string: self.posterUrlString)!)
+                
+                // Fade in
+                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                    self.posterImage.alpha = 1.0
+                    }, completion: nil)
+        })
     }
-
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
